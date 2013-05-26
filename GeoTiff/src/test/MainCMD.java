@@ -16,7 +16,7 @@ public class MainCMD {
 							   ,{ x, x, x}
 							   ,{ x, x, x}
 							  };
-		
+		//hellow
 		//This is Laplacian mask
 		double[][] highpass = { 
 								{ y,   y, y}
