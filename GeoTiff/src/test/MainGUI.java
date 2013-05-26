@@ -21,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import tiff.baseline.GrayScaleImage;
 
@@ -30,7 +31,7 @@ public class MainGUI{
 	static BufferedImage     bin;
 	static JFrame jf;
 	static TiffCanvas canvas;
-	static final JFileChooser fc  = new JFileChooser();
+	static JFileChooser fc ;
 	static Polygon selectedBoundry;
 	static boolean select;
 	
@@ -124,13 +125,25 @@ public class MainGUI{
 
 			@Override
 			public void actionPerformed(ActionEvent ae) {
+				  fc = new JFileChooser();
+				    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+				        ".tiff,.tif", "tiff", "tif","TIFF","TIF");
+				    fc.setFileFilter(filter);
+				    int returnVal = fc.showOpenDialog(jf);
+				    if(returnVal == JFileChooser.APPROVE_OPTION) {
+				       openImage(fc.getSelectedFile().getName());
+				    }
+				    else
+				    {
+				    	
+				    }
 				//openImage( "src/test/input.tif" );
-				int val = fc.showOpenDialog( jf );
+				/*int val = fc.showOpenDialog( jf );
 				if( val == JFileChooser.APPROVE_OPTION ){
 					openImage ( fc.getSelectedFile().getAbsolutePath() );
 				}else{
 					
-				}
+				}*/
 			}
 		});
 		
